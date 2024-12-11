@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Spam žinučių tikrintuvas</h1>
+        <h1>Spam žinučių tikrinimas</h1>
         <p>Įrašykite tekstą ir pasirinkite algoritmą</p>
-        <textarea id="message" placeholder="Žinutė........."></textarea>
+        <textarea id="message" placeholder="Tekstas........."></textarea>
         <select id="algorithm">
             <option value="AVK">Atraminių vektorių klasifikatorius</option>
             <option value="LRK">Logistinės regresijos klasifikatorius</option>
@@ -23,19 +23,25 @@
     </div>
 
   <div class="container history">
-      <h2>Praeiti tikrinimai</h2>
-      <ul>
-          {% for call in history %}
-          <li>
+      <h2>Rezultatai</h2>
+
+      {% for call in history %}
+      <div class="processed-info">
+
+        <div>
+            <p><b>Žinutė:</b> {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}</p>
             
-              <strong>Žinutė:</strong> 
-              {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}    
-              <br><strong>Algoritmas:</strong> {{ call.algorithm }} 
-              <br><strong>Rezultatas:</strong> {{ call.result }}
-              <a href="/inspect/{{ loop.index0 }}">Peržiūrėti</a>
-          </li>
-          {% endfor %}
-      </ul>
+            <p><b>Algoritmas:</b> {{ call.algorithm }} </p>
+            
+            <p><b>Rezultatas:</b> {{ call.result }}</p>
+        </div>
+
+        <div>
+            <a href="/inspect/{{ loop.index0 }}">Peržiūrėti</a>
+        </div>
+
+      </div>
+      {% endfor %}
   </div>
 
     <script>

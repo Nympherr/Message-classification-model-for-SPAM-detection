@@ -4,7 +4,7 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f9f586, #91eae4);
+    background: linear-gradient(135deg, #adab86, #91eae4);
     color: #333;
     text-align: center;
     padding: 20px;
@@ -75,6 +75,7 @@ button:hover {
 .history h2 {
     font-size: 1.5em;
     color: #4a90e2;
+    text-align: center;
 }
 
 .history ul {
@@ -91,26 +92,21 @@ button:hover {
     color: #357abd;
     text-decoration: none;
     margin-left: 20px;
+    background-color: #357abd;
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    transition: 0.5s ease all;
 }
 
 .history a:hover {
-    text-decoration: underline;
+    transition: 0.5s ease all;
+    background-color: #235788;
 }
 
-p {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    word-wrap: break-word;
-}
-
-a {
-    color: #357abd;
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    margin-top: 20px;
-}
-
-a:hover {
-    text-decoration: underline;
+.processed-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid black;
 }
