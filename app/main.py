@@ -3,6 +3,7 @@ import joblib
 import re
 import scipy.sparse as sp
 
+# ----- AVK modelis ------
 model_avk = joblib.load('./models/AVK/model.pkl')
 vectorizer_avk = joblib.load('./models/AVK/vectorizer.pkl')
 
