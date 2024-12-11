@@ -92,28 +92,28 @@
 </head>
 <body>
     <div class="container">
-        <h1>Spam or Ham Classifier</h1>
-        <p>Enter your text and choose an algorithm to classify your message.</p>
-        <textarea id="message" placeholder="Type your message here..."></textarea>
+        <h1>Spam žinučių tikrintuvas</h1>
+        <p>Įrašykite tekstą ir pasirinkite algoritmą</p>
+        <textarea id="message" placeholder="Žinutė........."></textarea>
         <select id="algorithm">
-            <option value="1">pirmas</option>
+            <option value="AVK">Atraminių vektorių klasifikatorius</option>
             <option value="B">Algorithm B</option>
             <option value="C">Algorithm C</option>
         </select>
-        <button onclick="classifyMessage()">Classify</button>
+        <button onclick="classifyMessage()">Tikrinti žinutę</button>
         <div class="result" id="result"></div>
     </div>
 
   <div class="container history">
-      <h2>Previous Calls</h2>
+      <h2>Praeiti tikrinimai</h2>
       <ul>
           {% for call in history %}
           <li>
-              <strong>Message:</strong> 
-              {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %} 
-              | <strong>Algorithm:</strong> {{ call.algorithm }} 
-              | <strong>Result:</strong> {{ call.result }}
-              <a href="/inspect/{{ loop.index0 }}">Inspect</a>
+              <strong>Žinutė:</strong> 
+              {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}    
+              | <strong>Algoritmas:</strong> {{ call.algorithm }} 
+              | <strong>Rezultatas:</strong> {{ call.result }}
+              <a href="/inspect/{{ loop.index0 }}">Peržiūrėti</a>
           </li>
           {% endfor %}
       </ul>
@@ -131,7 +131,7 @@
                 body: JSON.stringify({ message, algorithm })
             });
             const data = await response.json();
-            location.reload(); // Refresh to update the history
+            location.reload();
         }
     </script>
 </body>

@@ -34,7 +34,7 @@ def classify():
     message = data.get('message', '')
     algorithm = data.get('algorithm', 'A')
 
-    if algorithm == '1':
+    if algorithm == 'AVK':
         result = algorithm_1(message)
     elif algorithm == 'B':
         result = 'ham (Algorithm B)'
