@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from datetime import datetime
 import joblib
 import re
 import scipy.sparse as sp
@@ -9,7 +8,7 @@ vectorizer1 = joblib.load('./models/1/vectorizer.pkl')
 
 punctuation_pattern = r'[!"#$%&\'()*+,-./:;<=>?@[\\\]^_`{|}~]'
 
-def algo1(message):
+def algorithm_1(message):
     message_length = len(message)
     message_punct_count = len(re.findall(punctuation_pattern, message))
     message_vector = vectorizer1.transform([message])
@@ -35,10 +34,8 @@ def classify():
     message = data.get('message', '')
     algorithm = data.get('algorithm', 'A')
 
-    start_time = datetime.now()
-
     if algorithm == '1':
-        result = algo1(message)
+        result = algorithm_1(message)
     elif algorithm == 'B':
         result = 'ham (Algorithm B)'
     elif algorithm == 'C':
@@ -46,12 +43,9 @@ def classify():
     else:
         result = 'Invalid Algorithm'
     
-    end_time = datetime.now()
-    time_taken_ms = (end_time - start_time).total_seconds() * 1000  # Convert to milliseconds
-
-    call_details = {'message': message, 'algorithm': algorithm, 'result': result, 'time_taken_ms': time_taken_ms}
+    call_details = {'message': message, 'algorithm': algorithm, 'result': result}
     history.append(call_details)
-    return jsonify({'result': result, 'time_taken_ms': time_taken_ms})
+    return jsonify({'result': result})
 
 @app.route('/inspect/<int:call_id>')
 def inspect(call_id):

@@ -113,7 +113,6 @@
               {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %} 
               | <strong>Algorithm:</strong> {{ call.algorithm }} 
               | <strong>Result:</strong> {{ call.result }}
-              | <strong>Time Taken:</strong> {{ call.time_taken_ms }} ms
               <a href="/inspect/{{ loop.index0 }}">Inspect</a>
           </li>
           {% endfor %}
