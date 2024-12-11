@@ -34,14 +34,16 @@ def classify():
     message = data.get('message', '')
     algorithm = data.get('algorithm', 'A')
 
-    if algorithm == 'AVK':
+    if algorithm == 'SVM':
         result = algorithm_1(message)
-    elif algorithm == 'B':
-        result = 'ham (Algorithm B)'
-    elif algorithm == 'C':
-        result = 'ham (Algorithm C)'
+    elif algorithm == 'LRK':
+        result = 'neimplementuotas dar'
+    elif algorithm == 'NBK':
+        result = 'neimplementuotas dar'
+    elif algorithm == 'k-nearest':
+        result = 'neimplementuotas dar'
     else:
-        result = 'Invalid Algorithm'
+        result = 'Blogai pasirinktas algoritmas'
     
     call_details = {'message': message, 'algorithm': algorithm, 'result': result}
     history.append(call_details)

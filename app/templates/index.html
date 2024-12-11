@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spam or Ham Classifier</title>
+    <title>Spam žinučių tikrintuvas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html {
@@ -97,8 +97,9 @@
         <textarea id="message" placeholder="Žinutė........."></textarea>
         <select id="algorithm">
             <option value="AVK">Atraminių vektorių klasifikatorius</option>
-            <option value="B">Algorithm B</option>
-            <option value="C">Algorithm C</option>
+            <option value="LRK">Logistinės regresijos klasifikatorius</option>
+            <option value="NBK">Naive Bayes klasifikatorius</option>
+            <option value="k-nearest">K-artimiausių kaimynų klasifikatorius</option>  
         </select>
         <button onclick="classifyMessage()">Tikrinti žinutę</button>
         <div class="result" id="result"></div>
