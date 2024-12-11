@@ -80,10 +80,12 @@
         }
         .history li {
             margin-bottom: 10px;
+            margin-top: 30px;
         }
         .history a {
             color: #357abd;
             text-decoration: none;
+            margin-left: 20px;
         }
         .history a:hover {
             text-decoration: underline;
@@ -110,11 +112,12 @@
       <ul>
           {% for call in history %}
           <li>
+            
               <strong>Žinutė:</strong> 
               {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}    
-              | <strong>Algoritmas:</strong> {{ call.algorithm }} 
-              | <strong>Rezultatas:</strong> {{ call.result }}
-              <a href="/inspect_message/{{ loop.index0 }}">Peržiūrėti</a>
+              <br><strong>Algoritmas:</strong> {{ call.algorithm }} 
+              <br><strong>Rezultatas:</strong> {{ call.result }}
+              <a href="/inspect/{{ loop.index0 }}">Peržiūrėti</a>
           </li>
           {% endfor %}
       </ul>
