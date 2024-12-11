@@ -113,7 +113,7 @@
               {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}    
               | <strong>Algoritmas:</strong> {{ call.algorithm }} 
               | <strong>Rezultatas:</strong> {{ call.result }}
-              <a href="/inspect/{{ loop.index0 }}">Peržiūrėti</a>
+              <a href="/inspect_message/{{ loop.index0 }}">Peržiūrėti</a>
           </li>
           {% endfor %}
       </ul>

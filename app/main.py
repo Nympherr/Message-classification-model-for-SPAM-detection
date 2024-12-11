@@ -3,20 +3,20 @@ import joblib
 import re
 import scipy.sparse as sp
 
-model1 = joblib.load('./models/1/model.pkl')
-vectorizer1 = joblib.load('./models/1/vectorizer.pkl')
+model_avk = joblib.load('./models/AVK/model.pkl')
+vectorizer_avk = joblib.load('./models/AVK/vectorizer.pkl')
 
 punctuation_pattern = r'[!"#$%&\'()*+,-./:;<=>?@[\\\]^_`{|}~]'
 
 def algorithm_1(message):
     message_length = len(message)
     message_punct_count = len(re.findall(punctuation_pattern, message))
-    message_vector = vectorizer1.transform([message])
+    message_vector = vectorizer_avk.transform([message])
     vectorized_message_values = sp.hstack([
         message_vector,
         sp.csr_matrix([[message_length, message_punct_count]])
     ])
-    result = model1.predict(vectorized_message_values)
+    result = model_avk.predict(vectorized_message_values)
     return result[0]
 
 app = Flask(__name__)

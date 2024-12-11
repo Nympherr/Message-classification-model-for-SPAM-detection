@@ -8,7 +8,7 @@ import pandas as pd
 import re
 
 # Load and preprocess the dataset
-df = pd.read_csv("./../../dataset-spam.csv", encoding="latin1")
+df = pd.read_csv("./../datasets/dataset-spam.csv", encoding="latin1")
 
 # Preprocessing
 punctuation_pattern = r'[!"#$%&\'()*+,-./:;<=>?@[\\\]^_`{|}~]'
@@ -32,8 +32,8 @@ svc_model = SVC(gamma="scale")
 svc_model.fit(X_train_combined, Y_train)
 
 # Save model and vectorizer
-joblib.dump(svc_model, './../models/1/model.pkl')
-joblib.dump(vectorizer, './../models/1/vectorizer.pkl')
+joblib.dump(svc_model, './../models/AVK/model.pkl')
+joblib.dump(vectorizer, './../models/AVK/vectorizer.pkl')
 
 # Evaluate accuracy
 predictions = svc_model.predict(X_test_combined)
