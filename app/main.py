@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import joblib
 import re
 import scipy.sparse as sp
+import numpy as np
 
 # ----- AVK modelis ------
 model_avk = joblib.load('./trained_models/AVK/model.pkl')
@@ -29,6 +30,30 @@ def algorithm_avk(message):
 
     return result[0]
 
+# ----- LRK modelis ------
+model_lrk = joblib.load('./trained_models/LRK/model.pkl')
+vectorizer_lrk = joblib.load('./trained_models/LRK/vectorizer.pkl')
+
+def algorithm_lrk(message):
+
+    message_length = len(message)
+    message_punct_count = len(re.findall(punctuation_pattern, message))
+    message_vector = vectorizer_lrk.transform([message])
+
+    word_count = len(message.split())
+    number_count = len(re.findall(r'\d+', message))
+    standalone_number_count = len(re.findall(r'\b\d+\b', message))
+    average_word_length = sum(len(word) for word in message.split()) / word_count if word_count > 0 else 0
+    ratio_words_punctuation = word_count / message_punct_count if message_punct_count > 0 else 0
+
+    X_num = np.array([[message_length, message_punct_count, word_count, number_count, standalone_number_count, average_word_length, ratio_words_punctuation]])
+
+    X_combined = sp.hstack([message_vector, X_num])
+
+    prediction = model_lrk.predict(X_combined)
+
+    return prediction[0]
+
 app = Flask(__name__)
 
 history = []
@@ -47,7 +72,7 @@ def classify():
     if algorithm == 'AVK':
         result = algorithm_avk(message)
     elif algorithm == 'LRK':
-        result = 'neimplementuotas dar'
+        result = algorithm_lrk(message)
     elif algorithm == 'NBK':
         result = 'neimplementuotas dar'
     elif algorithm == 'k-nearest':

@@ -1,6 +1,6 @@
 # ----- Atraminių vektorių klasifikatorius -----
 
-import joblib
+from joblib import dump
 import scipy.sparse as sp
 from sklearn.svm import SVC
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import pandas as pd
 
-df = pd.read_csv("./../datasets/dataset_1.csv", encoding="latin1")
+df = pd.read_csv("./../datasets/dataset_unbalanced.csv", encoding="latin1")
 
 X = df[['message', 'length', 'punct_count', 'word_count', 'number_count', 'standalone_number_count', 'average_word_length', 'ratio_words_punctuation']]
 Y = df['value']
@@ -24,8 +24,8 @@ X_test_combined = sp.hstack([X_test_message, sp.csr_matrix(X_test[['length', 'pu
 svc_model = SVC(gamma="scale")
 svc_model.fit(X_train_combined, Y_train)
 
-joblib.dump(svc_model, './../trained_models/AVK/model.pkl')
-joblib.dump(vectorizer, './../trained_models/AVK/vectorizer.pkl')
+dump(svc_model, './../trained_models/AVK/model.pkl')
+dump(vectorizer, './../trained_models/AVK/vectorizer.pkl')
 
 predictions = svc_model.predict(X_test_combined)
 accuracy = metrics.accuracy_score(Y_test, predictions)
