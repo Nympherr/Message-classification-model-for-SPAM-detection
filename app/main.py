@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from trained_models.trained_models import use_classifying_algorithm
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/assets', static_folder='assets')
 
 history = []
 
