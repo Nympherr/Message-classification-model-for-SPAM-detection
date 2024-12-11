@@ -32,5 +32,3 @@ print(metrics.classification_report(Y_test, predictions))
 
 dump(nb_model, './../trained_models/NBK/model.pkl')
 dump(vectorizer, './../trained_models/NBK/vectorizer.pkl')
-
-print(metrics.accuracy_score(Y_test, predictions))

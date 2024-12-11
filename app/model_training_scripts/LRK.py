@@ -24,7 +24,6 @@ X_train, X_test, Y_train, Y_test = train_test_split(X_combined, Y)
 lr_model = LogisticRegression(solver='lbfgs', max_iter=500)
 lr_model.fit(X_train, Y_train)
 
-
 predictions = lr_model.predict(X_test)
 print(metrics.accuracy_score(Y_test, predictions))
 
