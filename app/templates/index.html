@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Spam žinučių tikrinimas</h1>
-        <p>Įrašykite tekstą ir pasirinkite algoritmą</p>
+        <p>Įrašykite tekstą ir pasirinkite modelį</p>
         <textarea id="message" placeholder="Tekstas........."></textarea>
         <select id="algorithm">
             <option value="AVK">Atraminių vektorių klasifikatorius</option>
@@ -31,7 +31,7 @@
         <div>
             <p><b>Žinutė:</b> {{ call.message[:50] }}{% if call.message|length > 50 %}...{% endif %}</p>
             
-            <p><b>Algoritmas:</b> {{ call.algorithm }} </p>
+            <p><b>Modelis:</b> {{ call.algorithm }} </p>
             
             <p><b>Rezultatas:</b> {{ call.result }}</p>
         </div>

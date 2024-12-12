@@ -1,0 +1,27 @@
+{
+    "model": "Logistin\u0117s regresijos klasifikatorius",
+    "dataset": "dataset_unbalanced.csv",
+    "dataset_effectiveness": "86.59%",
+    "training_data": {
+        "size": 4179,
+        "distribution": {
+            "ham": 3630,
+            "spam": 549
+        }
+    },
+    "testing_data": {
+        "size": 1393,
+        "distribution": {
+            "ham": 1195,
+            "spam": 198
+        }
+    },
+    "model_results": {
+        "ham": 1217,
+        "spam": 176
+    },
+    "metrics": {
+        "accuracy": "97.70%",
+        "report": "              precision    recall  f1-score   support\n\n         ham       0.98      1.00      0.99      1195\n        spam       0.97      0.86      0.91       198\n\n    accuracy                           0.98      1393\n   macro avg       0.97      0.93      0.95      1393\nweighted avg       0.98      0.98      0.98      1393\n"
+    }
+}

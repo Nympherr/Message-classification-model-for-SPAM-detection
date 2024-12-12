@@ -8,12 +8,41 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <p><strong>Žinutė:</strong></p>
-        <p>{{ call.message }}</p>
-        <p><strong>Algoritmas:</strong> {{ call.algorithm }}</p>
-        <p><strong>Rezultatas:</strong> {{ call.result }}</p>
-        <a href="/">Grįžti</a>
+    <div class="container inspect-message-container">
+        <h2>Suvestinė</h2>
+
+        <div>
+            <p><b style="display: block; margin-bottom: 5px;">Žinutė:</b> {{ call.message }}</p>
+            <p><b>Rezultatas:</b> {{ call.result }}</p>
+        </div>
+        <a href="/">Grįžti į pagrindinį puslapį</a>
+    </div>
+    <div class="container model-info">
+        <h2>Modelio duomenys</h2>
+        <div>
+            <p><b>Modelis:</b> {{ call.algorithm_data.model }}</p>
+            <p><b>Modelio treniravimui naudotas rinkinys:</b> {{ call.algorithm_data.dataset }}</p>
+            <p><b>Duomenų rinkiniui reikalingas tikslumas:</b> > {{ call.algorithm_data.dataset_effectiveness }}</p>
+            <p><b>Modelio tikslumas:</b> {{ call.algorithm_data.metrics.accuracy }}</p>
+            <p><b>Treniravimo duomenys:</b> Dydis: {{ call.algorithm_data.training_data.size }} | Ham: {{ call.algorithm_data.training_data.distribution.ham }} | Spam: {{ call.algorithm_data.training_data.distribution.spam }}</p>
+            <p><b>Testavimo duomenys:</b> Dydis: {{ call.algorithm_data.testing_data.size }} | Ham: {{ call.algorithm_data.testing_data.distribution.ham }} | Spam: {{ call.algorithm_data.testing_data.distribution.spam }}</p>
+        </div>
+    </div>
+    <div class="container data-info">
+        <div>
+            <h2>Duomenų rinkinys (testavimo)</h2>
+    
+            <div>
+                <img src="data:image/png;base64,{{ call.data_graph|b64encode }}">
+            </div>
+        </div>
+        <div>
+            <h2>Modelio rezultatai</h2>
+        
+            <div>
+                <img src="data:image/png;base64,{{ call.model_graph|b64encode }}">
+            </div>
+        </div>
     </div>
 </body>
 </html>

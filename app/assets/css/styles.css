@@ -110,3 +110,55 @@ button:hover {
     align-items: center;
     border-top: 1px solid black;
 }
+
+.inspect-message-container a {
+    text-decoration: none;
+    color: white;
+    background-color: #357abd;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.inspect-message-container a:hover {
+    transition: 0.5s ease all;
+    background-color: #235788;
+}
+
+.inspect-message-container p, .inspect-message-container h2{
+    margin: 0px;
+}
+
+.inspect-message-container {
+    padding: 30px;
+}
+
+.inspect-message-container > div {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inspect-message-container > div p {
+    word-wrap: break-word;
+}
+
+.model-info > div{
+    text-align: left;
+}
+
+.data-info{
+    display: flex;
+}
+
+.data-info img{
+    width: 100%;
+}
+
+.data-info h2{
+    height: 60px;
+}
+
+.container.data-info{
+    width: 800px;
+}

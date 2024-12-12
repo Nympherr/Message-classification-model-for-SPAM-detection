@@ -1,0 +1,27 @@
+{
+    "model": "K-artimiausi\u0173 kaimyn\u0173 klasifikatorius",
+    "dataset": "dataset_unbalanced.csv",
+    "dataset_effectiveness": "86.59%",
+    "training_data": {
+        "size": 4179,
+        "distribution": {
+            "ham": 3606,
+            "spam": 573
+        }
+    },
+    "testing_data": {
+        "size": 1393,
+        "distribution": {
+            "ham": 1219,
+            "spam": 174
+        }
+    },
+    "model_results": {
+        "ham": 1233,
+        "spam": 160
+    },
+    "metrics": {
+        "accuracy": "97.70%",
+        "report": "              precision    recall  f1-score   support\n\n         ham       0.98      0.99      0.99      1219\n        spam       0.94      0.87      0.90       174\n\n    accuracy                           0.98      1393\n   macro avg       0.96      0.93      0.95      1393\nweighted avg       0.98      0.98      0.98      1393\n"
+    }
+}
